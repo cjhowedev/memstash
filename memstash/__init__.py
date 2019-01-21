@@ -1,4 +1,5 @@
 import logging
+import os
 from datetime import datetime, timedelta
 
 from flask import Flask, g, jsonify, request, session
@@ -30,7 +31,11 @@ def init_sentry():
 
 
 db.init_app(app)
-migrate = Migrate(app, db)
+migrate = Migrate(
+    app,
+    db,
+    directory=os.path.join(os.path.dirname(__file__), './migrations')
+)
 
 route_prefix = '/api'
 

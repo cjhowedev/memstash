@@ -1,0 +1,4 @@
+python-dotenv
+pylint
+pylint-flask
+autopep8

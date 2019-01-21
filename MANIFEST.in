@@ -1,0 +1,3 @@
+graft memstash/migrations
+prune memstash/migrations/versions/__pycache__
+prune memstash/migrations/__pycache__
