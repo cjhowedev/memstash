@@ -1,0 +1,22 @@
+@import "~bulma";
+
+@for $i from 1 through 7 {
+  .mb-#{$i} {
+    margin-bottom: nth($sizes, $i) !important;
+  }
+
+  .mt-#{$i} {
+    margin-bottom: nth($sizes, $i) !important;
+  }
+
+  .mv-#{$i} {
+    margin-bottom: nth($sizes, $i) !important;
+    margin-top: nth($sizes, $i) !important;
+  }
+}
+
+.note {
+  border-bottom: 1px solid $border;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem !important;
+}
