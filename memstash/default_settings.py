@@ -12,3 +12,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SENTRY_DSN = os.getenv(
     'SENTRY_DSN'
 )
+SESSION_COOKIE_SECURE = os.getenv(
+    'SECURE_COOKIE',
+    'false'
+).lower() in ["true", "t", "1", "on"]
