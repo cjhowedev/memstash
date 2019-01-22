@@ -1,0 +1,25 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: memstash
+  flask:
+    build:
+      context: .
+      dockerfile: uwsgi.Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres/memstash
+      SECRET_KEY: supersecretkey
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    depends_on:
+      - flask
+    ports:
+      - "8080:80"
