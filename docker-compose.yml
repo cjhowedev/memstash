@@ -2,6 +2,7 @@ version: "3"
 services:
   postgres:
     image: postgres:11-alpine
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -10,6 +11,7 @@ services:
     build:
       context: .
       dockerfile: uwsgi.Dockerfile
+    restart: always
     depends_on:
       - postgres
     environment:
@@ -19,6 +21,7 @@ services:
     build:
       context: .
       dockerfile: nginx.Dockerfile
+    restart: always
     depends_on:
       - flask
     ports:
