@@ -16,5 +16,4 @@ RUN adduser -S uwsgi
 
 USER uwsgi
 
-CMD FLASK_APP=memstash flask db upgrade && \
-  uwsgi --master -s 0.0.0.0:5000 --manage-script-name --mount /=memstash:app
+CMD uwsgi --master -s 0.0.0.0:5000 --manage-script-name --mount /=memstash:app
