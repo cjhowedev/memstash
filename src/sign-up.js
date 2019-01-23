@@ -20,7 +20,7 @@ const SignUp = ({ history }) => (
                 /^[A-Za-z0-9_]+$/,
                 "Your username can only have letters, numbers and underscores."
               )
-              .min(8, "Your username must be at least 8 characters long")
+              .min(3, "Your username must be at least 3 characters long")
               .max(64, "Your username cannot be more than 64 characters long"),
             password: yup
               .string()

@@ -19,10 +19,18 @@ class PublicNotes extends Component {
       const notes = await getPublicNotes(this.getUsername());
       this.setState({ isLoadingNotes: false, loadingErrors: null, notes });
     } catch (err) {
-      this.setState({
-        isLoadingNotes: false,
-        loadingErrors: err.messages != null ? err.messages : [err.toString()]
-      });
+      if (err.response && err.response.status === 404) {
+        this.setState({
+          isLoadingNotes: false,
+          loadingErrors: null,
+          notes: []
+        });
+      } else {
+        this.setState({
+          isLoadingNotes: false,
+          loadingErrors: err.messages != null ? err.messages : [err.toString()]
+        });
+      }
     }
   }
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { deleteNote, getNotes, postNote, shareNote } from "./api";
-import { AuthContext } from "./auth";
+import AuthConsumer from "./auth";
 import NoteList from "./note-list";
 
 export default class Notes extends Component {
@@ -16,8 +17,6 @@ export default class Notes extends Component {
     isSharingNote: false,
     sharingErrors: null
   };
-
-  static contextType = AuthContext;
 
   async submitNote() {
     if (this.state.isSubmittingNote) {
@@ -129,7 +128,18 @@ export default class Notes extends Component {
     const loadingNoteClass = this.state.isSubmittingNote ? " is-loading" : "";
     return (
       <>
-        <h1 className="title">Your Notes</h1>
+        <AuthConsumer
+          children={({ username }) => (
+            <Link
+              className="navbar-item title"
+              to={`/notes/${username}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Your Notes
+            </Link>
+          )}
+        />
         <div className="mb-3">
           <div className="field has-addons">
             <p className="control is-expanded">

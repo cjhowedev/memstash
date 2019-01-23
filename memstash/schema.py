@@ -9,9 +9,9 @@ class UserSchema(Schema):
         error_messages={'required': 'A username is required'},
         validate=[
             validate.Length(
-                min=8,
+                min=3,
                 max=64,
-                error="Your username must be between 8 and 64 characters long"
+                error="Your username must be between 3 and 64 characters long"
             ),
             validate.Regexp(
                 r"\A[A-Za-z0-9_]+\Z",

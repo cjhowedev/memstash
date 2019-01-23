@@ -26,7 +26,9 @@ const Nav = () => (
             </div>
           ) : (
             <>
-              <div className="navbar-item mr-1">Hello {username}!</div>
+              <Link className="navbar-item mr-1" to={`/notes/${username}`}>
+                Hello {username}!
+              </Link>
               <div className="navbar-item">
                 <div className="buttons">
                   <button className="button is-danger" onClick={() => logout()}>

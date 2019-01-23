@@ -27,6 +27,7 @@ const NoteList = ({
         </ul>
       </div>
     )}
+    {notes.length < 1 && <div class="subtitle">No notes found</div>}
     {notes.map(({ id, text, isPublic }) => (
       <div key={id} className="columns is-vcentered is-marginless note">
         <p className="column is-paddingless">{text}</p>
